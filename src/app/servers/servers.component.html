@@ -1,2 +1,47 @@
-<app-server></app-server>
-<app-server></app-server>
+<div class="jumbotron">
+    <h1 class="display-4">Hello From servers Component!</h1>
+    <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo quo odit, debitis nobis laboriosam dolor veniam asperiores deleniti fugit sint aut vitae officia consequatur natus, quasi incidunt sunt atque sequi.
+    Qui reprehenderit quis blanditiis magnam quibusdam necessitatibus earum delectus aliquam maxime commodi sed quos, libero ipsum ipsa? Dolor et maxime, at commodi culpa reiciendis minima debitis minus eos, mollitia porro!
+    Repudiandae sit asperiores iure nulla ducimus quasi quisquam porro voluptatum laboriosam cum doloremque, labore quia quibusdam illo. Aliquam possimus at minima dolore, et voluptates dignissimos veritatis minus cum perferendis excepturi?</p>
+    
+
+    <hr>
+    
+    <label for="name">Server Name</label>
+
+    <!-- <input 
+        type="text" 
+        id="name" 
+        class="form-control" 
+        (input)="onUpdateServerName($event)" 
+        autocomplete="off"> -->
+    <input 
+        type="text" 
+        id="name" 
+        class="form-control" 
+        [(ngModel)]="serverName" 
+        autocomplete="off">
+
+    <!-- <p class="m-0">{{serverName}}</p> -->
+
+    <button 
+        class="btn btn-primary"
+        [disabled]="!allowNewServer"
+        (click)="onCreateServer()"
+        >
+        Add Server
+    </button>
+
+</div>
+
+<p *ngIf="serverCreated; else noServer"  >Server was created successufuly, server name is {{ serverName }}</p>
+<!-- <ng-template #noServer>
+    <p > No server was created!</p>
+</ng-template> -->
+
+<!-- <p class="mt-2">{{ serverCreationStatus }}</p> -->
+<!-- <p>{{ allowNewServer }}</p>
+<p [innerText]="allowNewServer"></p> -->
+
+
+<app-server *ngFor="let server of servers"></app-server>
